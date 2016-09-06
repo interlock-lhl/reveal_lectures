@@ -24,8 +24,99 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>...</h1>
+					<h3>Week 1 Day 4</h3>
+				</section>
+
+				<section>
+					<section>
+						<h2>Functions are values</h2>
+					</secton>
+				</section><!-- end functions are values -->
+
+				<section>
+					<section>
+						<h2>Anonymous functions</h2>
+					</section>
+
+					<section>
+						What is an anonymous function?
+					</section>
+
+					<section>
+						Is this one?
+						<pre>
+							var log = function(message) {
+								console.log("[LOG MESSAGE] " + messages);
+							}
+						</pre>
+					</section>
+
+					<section>
+
+					</section>
+				</section><!-- end anonymous functions -->
+
+				<section>
+					<section>
+						<h2>Function declaration vs function expression</h2>
+					</section>
+				</section><!-- end Function declaration vs function expression -->
+
+				<section>
+					<section>
+						<h2>Function calling vs passing (reference to a function)</h2>
+					</section>
+
+					<section>
+						<h2>Callbacks</h2>
+					</section>
+
+					<section>
+						What are they?
+					</section>
+
+					<section>
+						Patterns NodeJS vs jQuery vs web API's
+					</section>
+
+					<section>
+						NodeJS
+						<pre>fn(err, result, ...)</pre>
+					</section>
+
+					<section>
+						jQuery
+						<pre></pre>
+					</section>
+
+					<section>
+						Web API's
+						<pre></pre>
+						<pre></pre>
+					</section>
+
+					<section>
+						Simple Example
+						<pre>
+
+							function delayed_call(message, cb) {
+								setTimeout(cb, this, message);
+							}
+
+							delayed_call("Cats are purrfect", function(message) {
+								log(message);
+							});
+						</pre>
+					</section>
+
+					<section>
+						Callbacks can obviousy be anonymous functions.
+						Can they also be named functions?
+						Or functions with in an execution context?
+					</section>
+				</section><!-- end callbacks -->
 			</div>
 		</div>
 
