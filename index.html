@@ -24,8 +24,166 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Web Security</h1>
+				</section>
+
+				<section>
+					<h2>Story Time</h2>
+				</section>
+
+				<section>
+					<h2>What is at risk?</h2>
+					<ul>
+						<li class="fragment">All the things</li>
+						<li class="fragment">Business</li>
+						<li class="fragment">$$$</li>
+						<li class="fragment">Identities</li>
+						<li class="fragment">PR</li>
+						<li class="fragment">Corp data/trade secrets/source code</li>
+						<li class="fragment">IoT data/services</li>
+						<li class="fragment">Utilities</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Types of Attacks</h2>
+					</section>
+
+					<section>
+						<h3>SQL Injection</h3>
+						<ul>
+						 <li>Use the built in SQL string interpolation</li>
+						 <li>Do not use regular string interpolation `field = #{params[:my_value]}`</li>
+						 <li>Avoid writing raw SQL as much as possible, create a process to review hand written SQL in your projects.</li>
+					 </ul>
+					 <h3 class="fragment">DEMO!</h3>
+					</section>
+
+					<section>
+						<h3>Validation</h3>
+						<ul>
+						  <li>(whitelist fields, validate inputs)</li>
+						  <li>rails pattern makes us specify white lists for posts.</li>
+						  <li>You may want different kinds if white lists for different areas (guest/registered/admin).</li>
+					  </ul>
+					</section>
+
+					<section>
+						<h3>DDoS</h3>
+						<p>Typically exploiting a part of your site/app that is slow to execute. Costing you more CPU/memory then a regular request. Often a public URL that many distributed clients can all connect to as much as possible until your site is overwhelmed and stops responding.</p>
+					</section>
+
+					<section>
+						<h3>Buffer Overflow</h3>
+						<ul>
+						 <li>Ruby doesn't stop you from going past the index of an array, but the result is `nil`.</li>
+						 <li>In C, you can go past the end of an array and potentially access data you should not have access to. Even rewrite some of the code in some cases.</li>
+					  </ul>
+					</section>
+
+					<section>
+						<h3>XSS (Xross-site-scripting)</h3>
+						<ul>
+					    <li>sinatra `escape_html` eg. < to &amp;lt;</li>
+					    <li>rails html escapes all content by default (sometimes a PITA)</li>
+					    <li>HTML Entities</li>
+					  </ul>
+					</section>
+
+					<section>
+						<h3>Social Engineering</h3>
+						<p>Call support, get an account password reset over the phone?</p>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Proactive defences</h2>
+					</section>
+
+					<section>
+						<p>Better to make it difficult and unappealing to be a target.</p>
+					</section>
+
+					<section>
+						<p>Reduce your applications "Surface Area".</p>
+					</section>
+
+					<section>
+						<p>Remove old controllers and unused actions.</p>
+					</section>
+
+					<section>
+						<p>Do not store information you do not need to store.</p>
+					</section>
+
+					<section>
+						<p>Place very sensitive information on a secondary internal server/service with very limited access.</p>
+					</section>
+
+					<section>
+						<p>Stream your logs to 3rd party services as they come in.</p>
+					</section>
+
+					<section>
+						<p>Run regular scans for obvious exploits. Update your servers regularly.</p>
+					</section>
+
+					<section>
+						<p>Limit request rates from specific clients</p>
+					</section>
+
+					<section>
+						<p>Have backups that cannot be altered from the host machine.</p>
+					</section>
+
+					<section>
+						<p>Limit who can access services and how they can be accessed.</p>
+					</section>
+
+					<section>
+						<p>Give `sudo` to as few people as possible.</p>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Reactive Defences</h2>
+					</section>
+
+					<section>
+						<ul>
+							<li>Run intrustion detection software</li>
+						 	<li>[AIDE](http://aide.sourceforge.net/)</li>
+						 	<li>[SNORT](https://www.snort.org/)</li>
+						</ul>
+					</section>
+
+					<section>
+						<ul>
+							<li>Monitor service access and usage patterns</li>
+						 	<li>Automatically report when something out of the norm happens.</li>
+						 	<li>Update the "norm" regularly ;-)</li>
+							<li>Public sites should be ready to release a PR indicating the potential for data access, what was at risk, etc.</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section data-markdown>
+    			<script type="text/template">
+						## Resources
+						* [LHL OWASP Repo](https://github.com/lighthouse-labs/owasp-top-10-examples)
+						* [Rails Security](http://guides.rubyonrails.org/security.html)
+						* [Web Sec Weekly](https://websecweekly.org/)
+						* [OWasp Top 10 List](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)
+						* [SecTools](http://sectools.org/)
+					</script>
+				</section>
 			</div>
 		</div>
 
