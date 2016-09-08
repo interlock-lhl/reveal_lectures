@@ -192,8 +192,31 @@ function() {
 					</section>
 
 					<section>
-						<h3>Advanced DEMO</h3>
-						<p class="fragment"></p>
+						<h2>jQuery style callback</h2>
+						<pre><code class="lang-js">
+// Select all h1 tags and run this callback when it is clicked
+jQuery('h1').click(function(e) {
+	console.log(e);
+	$(this).css('color', 'red');
+});
+						</code></pre>
+
+					</section>
+
+					<section>
+						<h2>NodeJS style callback</h2>
+						<pre><code class="lang-js">
+var fs = require('fs'); // ignore the magic man behind the curtain
+
+fs.readdir('./duck', function(err, files) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log(files);
+});
+						</code></pre>
+
 					</section>
 
 				</section><!-- end callbacks -->
