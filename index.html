@@ -24,8 +24,201 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>MongoDB</h1>
+					<p>For Data Persistance <span class="fragment">and maybe sessions</span></p>
+				</section>
+
+				<section>
+			  	<h2>Goals</h2>
+					<ul>
+						<li>Lets talk about databases</li>
+						<li>Intro to MongoDB</li>
+						<li>Demo of MongoDB</li>
+						<li>Putting MongoDB into a project</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Databases</h2>
+					</section>
+
+					<section>
+						<h3>In Memory</h3>
+						<pre><code class="lang-js">
+var database = [
+	{
+		id: 1,
+		url: "http://google.ca/",
+		shortcode: "3h532"
+	},
+	{
+		id: 2,
+		url: "http://lighthouselabs.ca",
+		shortcode: "h43h3"
+	}
+];
+</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>In Memory databases are gone when the app restarts/crashes</li>
+							<li>What if you have more data than you do memory?</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Flat File Style, with CSV</h3>
+
+						<pre><code class="lang-csv">id,url,shortcode
+1,http://google.ca/,3h532
+2,http://lighthouselabs.ca/,h43h3
+</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>Flat files can serialize data</li>
+							<li>We can store a lot of it on disk</li>
+							<li>How would we access large data files that are bigger than our memory?</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Structured style, with JSON</h3>
+						<pre><code class="lang-json">[
+	{
+		"id": 1,
+		"url": "http://google.ca/",
+		"shortcode": "3h532"
+	},
+	{
+		"id": 2,
+		"url": "http://lighthouselabs.ca",
+		"shortcode": "h43h3"
+	}
+]
+</code></pre>
+					</section>
+
+					<section>
+						<ul>
+							<li>More structured, so easier for humans to read/edit</li>
+							<li>It is nearly like JavaScript, hence JSON == JavaScript Object Notation</li>
+							<li>Many more serialization formats appear for web and application development: BSON, gRPC, XML</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>CONS</h2>
+						<ul>
+							<li>Lots of overhead for the programmer</li>
+							<li>How do we find specific items?</li>
+							<li>How do we support searching while someone is updating?</li>
+							<li>What if I have lots of data?</li>
+						</ul>
+						<aside class="notes" data-markdown>
+							- open, read/write, close. Sync'ing, locking, on and on and on.
+							- Full scans
+							- full locking or risk corruption
+							- it may take a long time to do any CRUD operation
+						</aside>
+					</section>
+
+					<section>
+						<h2>Appropriate Uses for flat-file</h2>
+						<ul>
+							<li>Static content/data</li>
+							<li>seed data for apps</li>
+							<li>Configuration</li>
+							<li>Meta data</li>
+						</ul>
+						<aside class="notes" data-markdown>
+							- country/region mappings for UX
+							- pre-populated data for ecomm, examples, etc
+							- .env, settings.yml, etc
+							- package.json, Gemfile, composer.json, etc.
+						</aside>
+					</section>
+				</section><!-- end databases -->
+
+				<section>
+					<section>
+						<h2>MongoDB Intro</h2>
+					</section>
+
+					<section>
+						<ul>
+							<li>Stores data as arrays of objects (JSON style)</li>
+							<li>You interact with it with a Javascript query syntax</li>
+							<li>It takes care of the details behind: CRUD</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Fancy Graph</h3>
+						<img data-src="/img/db_ranks.png" />
+						http://db-engines.com/en/ranking
+					</section>
+
+				</section><!-- end mongodb intro -->
+
+				<section>
+					<section>
+						<h3>Document storage</h3>
+						<p class="fragment">All your objects are now documents</p>
+						<p class="fragment">All your documents are part of a collection</p>
+						<p class="fragment">All your collections are in a database</p>
+						<aside class="notes" markdown>
+							- documents are rows
+							- collections are tables
+							- db's are... well... db's
+						</aside>
+					</section>
+
+					<section>
+						<h3>Documents</h3>
+						<ul>
+							<li>dynamic schema</li>
+							<li>A few extra types supported: <a href="https://docs.mongodb.com/manual/reference/bson-types/">BSON</a></li>
+							<li>Can be embedded in other documents, or linked to other documents.</li>
+						</ul>
+					</section>
+				</section><!-- end documents -->
+
+				<section>
+					<h3>How MongoDB uses JS</h3>
+				</section>
+
+				<section>
+					<h3>Data Model</h3>
+				</section>
+
+				<section>
+					<h3>Server -> Database -> Collection -> Document</h3>
+				</section>
+
+				<section>
+					<h3>Mongo Shell</h3>
+				</section>
+
+				<section>
+					<h3>Debugging</h3>
+				</section>
+
+				<section>
+					<section>
+						<h2>Demo</h2>
+					</section>
+				</section><!-- end mongodb demo -->
+
+				<section>
+					<section>
+						<h3>What does it look like in Express?</h3>
+					</section>
+				</section><!-- in express -->
 			</div>
 		</div>
 
