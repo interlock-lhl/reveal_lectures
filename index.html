@@ -7,7 +7,7 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -118,6 +118,7 @@ var database = [
 							<li>How do we find specific items?</li>
 							<li>How do we support searching while someone is updating?</li>
 							<li>What if I have lots of data?</li>
+							<li>Difficult to scale if we have multipel clients who need to access the data</li>
 						</ul>
 						<aside class="notes" data-markdown>
 							- open, read/write, close. Sync'ing, locking, on and on and on.
@@ -167,6 +168,22 @@ var database = [
 
 				<section>
 					<section>
+						<h3>Servers and clients</h3>
+					</section>
+
+					<section>
+						<h3>The familiar HTTP server and client model we know</h3>
+						<img data-src="/img/http_server.png" />
+					</section>
+
+					<section>
+						<h3>Our Express server can be a client to a database</h3>
+						<img data-src="/img/db_server.png" />
+					</section>
+				</section><!-- end server -->
+
+				<section>
+					<section>
 						<h3>Document storage</h3>
 						<p class="fragment">All your objects are now documents</p>
 						<p class="fragment">All your documents are part of a collection</p>
@@ -186,37 +203,77 @@ var database = [
 							<li>Can be embedded in other documents, or linked to other documents.</li>
 						</ul>
 					</section>
+
+					<section>
+						<h3>Access pattern</h3>
+						<ul>
+							<li>C<span class="fragment">reate</span></li>
+							<li>R<span class="fragment">ead</span></li>
+							<li>U<span class="fragment">pdate</span></li>
+							<li>D<span class="fragment">elete</span></li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Create</h3>
+					</section>
+					
+					<section>
+						<h3>Read</h3>
+						<a href="https://docs.mongodb.com/manual/reference/operator/query/">Operators</a>
+					</section>
+
+					<section>
+						<h3>Update</h3>
+						<a href="https://docs.mongodb.com/manual/reference/operator/update/">Operators</a>
+					</section>
+
+					<section>
+						<h3>Delete</h3>
+					</section>
+
 				</section><!-- end documents -->
 
 				<section>
-					<h3>How MongoDB uses JS</h3>
-				</section>
-
-				<section>
-					<h3>Data Model</h3>
-				</section>
-
-				<section>
-					<h3>Server -> Database -> Collection -> Document</h3>
-				</section>
-
-				<section>
-					<h3>Mongo Shell</h3>
-				</section>
-
-				<section>
-					<h3>Debugging</h3>
-				</section>
-
-				<section>
 					<section>
-						<h2>Demo</h2>
+						<h3>Mongo Shell</h3>
 					</section>
-				</section><!-- end mongodb demo -->
+
+					<section>
+						<h3>Run your queries here</h3>
+						<p class="fragment">Debugging Data</p>
+						<p class="fragment">Demo</p>
+					</section>
+
+				</section>
 
 				<section>
 					<section>
 						<h3>What does it look like in Express?</h3>
+						<p>Lets update my futile in-memory todo list app to use mongodb!</p>
+						<a href="http://mongodb.github.io/node-mongodb-native/2.2/">MongoDB client docs</a>
+					</section>
+
+					<section>
+						<h3>Install the client module for MongoDB</h3>
+						<script type="text/javascript" src="https://asciinema.org/a/9ttkzb6c1ivtxfkw0r68ocw56.js" id="asciicast-9ttkzb6c1ivtxfkw0r68ocw56" async data-loop="1"></script>
+					</section>
+
+					<section>
+						<h3>Connect to MongoDB</h3>
+						<pre><code class="lang=js">
+var MongoClient = require('mongodb').MongoClient;
+
+// Connection URL
+var url = process.env.MONGODB_URI || 'mongodb://localhost:27017/myproject';
+
+// Use connect method to connect to the server
+MongoClient.connect(url, function(err, db) {
+  if (err) return console.log(err);
+	// Do something with db
+  db.close();
+});
+						</code></pre>
 					</section>
 				</section><!-- in express -->
 			</div>
