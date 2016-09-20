@@ -6,7 +6,7 @@
     var keys = Object.keys(window);
     setInterval(function() {
       var k = Object.keys(window);
-      var difference = k.filter(x => keys.indexOf(x) == -1);
+      var difference = k.filter(function(x) { return keys.indexOf(x) == -1; });
       // console.log(difference);
       difference.forEach(function(key) {
         console.log(key);

@@ -60,8 +60,9 @@
 							global methods, properties and variables join this window object.
 						</aside>
 					</section>
+
 					<section>
-						https://developer.mozilla.org/en-US/docs/Web/API/Window
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window">Window API</a>
 					</section>
 				</section><!-- window -->
 
@@ -73,6 +74,14 @@
 					</section>
 
 					<section>
+						<h3>Some interesting info</h3>
+						<pre><code class="lang-js">
+navigator.getBattery().then(function(b) { console.log(b); }); // battery status
+navigator.geolocation.getCurrentPosition(function(position) { console.log(position.coords); });
+						</code></pre>
+					</section>
+
+					<section>
 						<h3>Gamepads!</h3>
 						<div id="gamepads" style="border: 2px solid red; height: 200px; overflow-y: scroll;">
 							Waiting for GamePad
@@ -81,7 +90,7 @@
 					</section>
 
 					<section>
-						https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator">Navigator API</a>
 					</section>
 				</section><!-- navigator -->
 
@@ -89,6 +98,14 @@
 					<section>
 						<h3>document</h3>
 						<p class="fragment">The browser populates this with the DOM as it parses the HTML</p>
+					</section>
+
+					<section>
+						<p>Also contains some document level features</p>
+						<pre><code class="lang-js">
+document.documentElement.webkitRequestFullscreen(); // some features are prefixed
+
+						</code></pre>
 					</section>
 
 					<section>
@@ -129,7 +146,7 @@ img.parentElement.removeChild(img)
 					</section>
 
 					<section>
-						https://developer.mozilla.org/en-US/docs/Web/API/Document
+						<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">Document API</a>
 					</section>
 
 				</section><!-- document -->
@@ -137,6 +154,13 @@ img.parentElement.removeChild(img)
 				<section>
 					<section>
 						<h3>Events</h3>
+						<p class="fragment">The result of the user interacting with your web page.</p>
+						<p class="fragment">And also life cycle events for the page and elements within it.</p>
+					</section>
+
+					<section>
+						<h3>What are events?</h3>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/Events">Events</a>
 					</section>
 
 					<section>
@@ -171,7 +195,7 @@ img.parentElement.removeChild(img)
 					</section>
 
 					<section>
-						https://javascript.info/tutorial/bubbling-and-capturing
+						<a href="https://javascript.info/tutorial/bubbling-and-capturing">Bubble and Capture</a>
 					</section>
 
 				</section><!-- events -->

@@ -1,6 +1,11 @@
 (function() {
   // first slide
   document.querySelector("#red_event1").addEventListener('click', function(e) {
+    if (e.target.style.backgroundColor == "red") {
+      this.style.backgroundColor = "yellow";
+    } else {
+      this.style.backgroundColor = "red";
+    }
     console.log("Red Event", this, e.target);
   });
   document.querySelector("#blue_event1").addEventListener('click', function(e) {
