@@ -7,7 +7,7 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -25,36 +25,231 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>Intro jQuery</h2>
+					<img data-src="/img/cookie_monster_waiting.gif" style="width: 80%; height: 80%;">
+				</section>
+				<section>
+					<h2>Client-side JavaScript</h2>
+				</section>
+
+				<section>
+					<p>So about ES6/ES2015...</p>
+					<p class="fragment">We have to revert back a little to ES5.</p>
+					<p class="fragment" style="margin: 0 auto; width: 50%;">
+						<img data-src="/img/okay_i_see.gif" />
+					</p>
+					<a href="https://kangax.github.io/compat-table/es6/" class="fragment">Table of ES5 vs ES6 stuff</a>
+					<aside class="notes" data-markdown>
+						- We have to fall back to ES5 for a while
+						- Will come back to using ES6 via babel in week 5's project
+						- Not enough browsers support ES2015 right now
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h3>window</h3>
+						<p class="fragment">Represents your whole environment in the browser</p>
+					</section>
+
+					<section data-state="globalstuff">
+						<p>global functions, properties and values appear on this object</p>
+						<div id="globalstuff" style="border: 2px solid red; height: 200px; overflow-y: scroll;">
+						</div>
+
+						<aside class="notes">
+							global methods, properties and variables join this window object.
+						</aside>
+					</section>
+					<section>
+						https://developer.mozilla.org/en-US/docs/Web/API/Window
+					</section>
+				</section><!-- window -->
+
+				<section>
+					<section>
+						<h3>navigator</h3>
+						<p class="fragment">Refers to this page we are on now</p>
+						<p class="fragment">Also a source of a lot of hardware APIs and general information</p>
+					</section>
+
+					<section>
+						<h3>Gamepads!</h3>
+						<div id="gamepads" style="border: 2px solid red; height: 200px; overflow-y: scroll;">
+							Waiting for GamePad
+						</div>
+
+					</section>
+
+					<section>
+						https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+					</section>
+				</section><!-- navigator -->
+
+				<section>
+					<section>
+						<h3>document</h3>
+						<p class="fragment">The browser populates this with the DOM as it parses the HTML</p>
+					</section>
+
+					<section>
+						<h3>finding DOM elements</h3>
+
+						<pre><code class="lang-js">
+var asides = document.getElementsByTagName("aside");
+var gamepad = document.getElementById("gamepad"); // Notice it is singular?
+var fragments = document.getElementsByClassName("fragment");
+
+// Or we can use query selectors AKA CSS selectors
+var asides = document.querySelector('aside');
+var gamepad = document.querySelector("#gamepad");
+var fragments = document.querySelector(".fragment");
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Modify elements</h3>
+						<pre><code class="lang-js">
+var fragments = document.getElementsByClassName("fragment");
+fragments[0].style.color = "red";
+						</code></pre>
+					</section>
+
+					<section id="createElement">
+						<h3>Create elements</h3>
+						<pre class="fragment"><code class="lang-js">
+var img = document.createElement("img"); // tag name here
+img.src = "http://fillmurray.com/300/300";
+document.querySelector("#createElement").appendChild(img);
+						</code></pre>
+
+						<pre class="fragment"><code class="lang-js">
+// and remove it
+img.parentElement.removeChild(img)
+						</code></pre>
+					</section>
+
+					<section>
+						https://developer.mozilla.org/en-US/docs/Web/API/Document
+					</section>
+
+				</section><!-- document -->
+
+				<section>
+					<section>
+						<h3>Events</h3>
+					</section>
+
+					<section>
+						<p>Events bubble from inner most child all the way up to the document</p>
+						<div id="red_event1" style="margin: 0 auto; width: 200px; height: 200px; background: red; border: 1px solid black;">
+							<div id="blue_event1"style="margin: 20px auto; width: 160px; height: 160px; background: blue; border: 1px solid black;">
+								<div id="green_event1"style="margin: 20px auto; width: 120px; height: 120px; background: green; border: 1px solid black;">
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<p>We can stop this madness with event.stopPropagation()</p>
+						<div id="red_event2" style="margin: 0 auto; width: 200px; height: 200px; background: red; border: 1px solid black;">
+							<div id="blue_event2"style="margin: 20px auto; width: 160px; height: 160px; background: blue; border: 1px solid black;">
+								<div id="green_event2"style="margin: 20px auto; width: 120px; height: 120px; background: green; border: 1px solid black;">
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<p>What happens if we have multiple event listeners?</p>
+						<div id="red_event3" style="margin: 0 auto; width: 200px; height: 200px; background: red; border: 1px solid black;">
+						</div>
+					</section>
+
+					<section>
+						<p>Many elements have their own events</p>
+						<a id="red_event4" style="margin: 0 auto; width: 200px; height: 200px; background: red; border: 1px solid black;" href="http://google.ca">
+							Some Link?
+						</a>
+					</section>
+
+					<section>
+						https://javascript.info/tutorial/bubbling-and-capturing
+					</section>
+
+				</section><!-- events -->
+
+				<section>
+					<h3>The End</h3>
+					<img data-src="/img/riker_clap.gif">
+				</section>
+
+				<!-- BREAKOUT -->
+
+
+				<section>
+					<h2>jQuery</h2>
+					<h3>Breakout</h3>
 				</section>
 
 				<section>
 					<section>
 						<h3>Why does it exist?</h3>
-						Three reasons:
-							It just gives us "syntactical sugar".
-							It used to be about cross browser compatibility but that is largely a non issue now (so really just one reason)
-							It's so popular that it has a virality effect (we teach b/c it's so popular)
+
+						<p>Three reasons:</p>
+						<ul>
+							<li class="fragment">It just gives us "syntactical sugar".</li>
+							<li class="fragment">It used to be about cross browser compatibility but that is largely a non issue now (so really just one reason)</li>
+							<li class="fragment">It's so popular that it has a virality effect (we teach b/c it's so popular)</li>
+						</ul>
 
 					</section>
 
 					<section>
 						<h3>How much additional behavior does it add to the browser?</h3>
-						none; it works within the constraints of what the browser API can do for us.
+						<img data-src="/img/nothing.gif" class="fragment"/>
+						<p class="fragment">It works within the constraints of what the browser API can do for us.</p>
 					</section>
 
 					<section>
 						<h3>Library or framework? Why?</h3>
-						Library, explain the difference (keep in mind they haven't seen a framework yet most likely).
+
+						<table>
+							<tr>
+								<td>Library</td><td>Framework</td>
+							</tr>
+							<tr>
+								<td class="fragment">Take it as it is</td>
+								<td class="fragment">Often allows you to modify its behavious via hooks/plugins/cat memes</td>
+
+							</tr>
+							<tr>
+								<td class="fragment">Focus on single domain of functionality</td>
+								<td class="fragment">Does many things</td>
+							</tr>
+							<tr>
+								<td class="fragment">Does not care how you use it</td>
+								<td class="fragment">You must follow its conventions/architecture to use it</td>
+							</tr>
+						</table>
+
+						<aside class="notes" data-markdown>
+### Library
+
+A library is a reusable piece of code which you use as it comes i.e it does not provide any hooks for you to extend it. A library will usually focus on a single piece of functionality, which you access through an API. You call a library function, it executes some code and then control is returned to your code. An example of a good Java library (or libraries in this case) is Apache Commons
+
+### Framework
+
+A framework is a piece of code which dictates the architecture your project will follow. Once you choose a framework to work with, you have to follow the framework's code and design methodologies. The framework will provide you with hooks and callbacks, so that you build on it - it will then call your plugged-in code whenever it wishes, a phenomenon called Inversion of Control.
+						</aside>
 					</section>
 
 					<section>
 						<h3>What is $ or jQuery in code exactly? How does it work?</h3>
+
 						Use DevTools to check it out. Might want to research this a bit
 					</section>
 
 					<section>
 						<h3>jQuery vs jQueryUI</h3>
+
 						speak to this
 					</section>
 
@@ -66,8 +261,11 @@
 
 				<section>
 					<h3>Expectations of You</h3>
-					The jQuery docs are quite good, you should be using them a lot
+					<p>
+					The jQuery docs are quite good, you should be using them a lot.
 					The API has alternative ways of doing things (eg .on('click') vs click()) and you should not get hung up on learning the entire surface area for jQuery. The goal is to learn it enough and get comfortable with the process of learning it (yes, this is a recurring theme!)
+					</p>
+					<img data-src="/img/kv.jpg" style="width: 100px; border-radius: 50%;" />
 				</section>
 
 				<section>
@@ -106,5 +304,8 @@
 				]
 			});
 		</script>
+		<script src="js/globalstuff.js"></script>
+		<script src="js/gamepad.js"></script>
+		<script src="js/event_bubbles.js"></script>
 	</body>
 </html>
