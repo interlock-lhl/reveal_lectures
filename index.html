@@ -48,6 +48,7 @@
 						<li class="fragment">Functions as Values</li>
 						<li class="fragment">Function declaration vs function expression</li>
 						<li class="fragment">What are anonymous functions?</li>
+						<li class="fragment">Method Signatures</li>
 						<li class="fragment">Callbacks</li>
 						<li class="fragment">Closures, if we have time</li>
 					</ul>
@@ -121,6 +122,48 @@ console.log(displayItem);
 					</section>
 
 				</section><!-- end functions are values -->
+				<section>
+					<section>
+						<h2>Method Signatures</h2>
+					</section>
+
+					<section>
+						<h3>Definition</h3>
+						<blockquote cite="https://developer.mozilla.org/en-US/docs/Glossary/Signature/Function">
+							A function signature (or type signature, or method signature) defines input and output of functions or methods.
+						</blockquote>
+					</section>
+
+					<section>
+						<h3>Lets break this down</h3>
+						<pre><code data-trim data-noescape class="lang-js">
+/**
+ * Render an array of songs into a string we can show.
+ * <span class="fragment highlight-red" data-fragment-index="1">@param {array} songs - Array of song objects</span>
+ * <span class="fragment highlight-red" data-fragment-index="2">@param {boolean} showDuration - Do we want to appent the duration</span>
+ * <span class="fragment highlight-red" data-fragment-index="3">@returns {String} String ready to render</span>
+ */
+function renderPlaylist(<span class="fragment highlight-red" data-fragment-index="1">songs</span>, <span class="fragment highlight-red" data-fragment-index="2">showDuration</span>) {
+	/* ... code does a thing */
+	return <span class="fragment highlight-red" data-fragment-index="3">result;</span>
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<p>Curious about JSDoc?</p>
+						<a href="http://usejsdoc.org/">http://usejsdoc.org/</a>
+					</section>
+
+					<section>
+						<h3>Let's review</h3>
+						<ul>
+							<li><a href="https://nodejs.org/api/console.html#console_console_log_data_args">console.log</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm">window.confirm</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.map</a></li>
+						</ul>
+					</section>
+				</section>
 
 				<section>
 					<section>
@@ -217,6 +260,10 @@ fs.readdir('./duck', function(err, files) {
 });
 						</code></pre>
 
+					</section>
+
+					<section>
+						<h3>Demo</h3>
 					</section>
 
 				</section><!-- end callbacks -->
