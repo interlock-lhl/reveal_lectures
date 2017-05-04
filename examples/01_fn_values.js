@@ -13,9 +13,12 @@ function renderItem(item) {
 
 // console.log("Value: ", renderItem);
 // console.log("Name: ", renderItem.name);
-// console.log("Type: ", typeof renderItem);
+console.log("Type: ", typeof renderItem);
 
 var copyOfDisplayItem = displayItem;
 var copyOfRenderItem = renderItem;
+
+console.log("Name: ", copyOfDisplayItem.name);
+console.log("Name: ", copyOfRenderItem.name);
 
 // Does copyOfRenderItem still have a name? What would it be?
